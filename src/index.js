@@ -4,7 +4,7 @@ import DateMonth from './DateMonth.js';
 import Ractive from 'ractive';
 
 // CJS-style export wrapper to avoid `DateMonth.default`:
-module.exports = (element, name, date) => {
+module.exports = (element, name = '', date) => {
 
   const store = createStore(reducer);
   const app = new Ractive({
@@ -16,7 +16,7 @@ module.exports = (element, name, date) => {
       name: name,
       store
     },
-    template: `<DateMonth {{#name}}name="{{name}}"{{/name}} date={{store.getState()}} />`,
+    template: `<DateMonth name="{{name}}" date={{store.getState()}} />`,
     oninit() {
       this.on({
         'DateMonth.MONTH': (event, month) => store.dispatch({ type: 'MONTH', month }),
