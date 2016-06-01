@@ -1,0 +1,47 @@
+.date_month {
+  display: inline-block;
+  font-family: sans-serif;
+  position: relative;
+  width: 300px;
+}
+
+.date_month footer {
+  border-top: 1px solid lightgrey;
+  padding: 8px;
+}
+
+.date_month .btn {
+  background-image: linear-gradient(to bottom, #fff, #e0e0e0 50%);
+  box-shadow: 0 1px 0 white inset;
+}
+
+.date_month .picker {
+  background-color: white;
+  border: 1px solid rgb(192,192,192);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  font-size: 80%;
+  position: absolute;
+  z-index: 1000;
+}
+
+.date_month .year {
+  border-left: 1px solid lightgrey;
+}
+
+.date_month .picker ul, .date_month .picker header {
+  column-count: 2;
+  margin: 0;
+  padding: 4px;
+}
+
+.date_month .picker li {
+  cursor: pointer;
+  list-style: none;
+  padding: 4px;
+  text-align: center;
+}
+
+.date_month .selected {
+  background-color: rgb(0, 175, 219);
+  color: white;
+}
