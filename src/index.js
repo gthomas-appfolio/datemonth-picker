@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import fecha from 'fecha';
 import reducer from './datemonth_reducer.js';
 import DateMonth from './DateMonth.js';
 import Ractive from 'ractive';
@@ -30,6 +31,7 @@ module.exports = (element, name = '', date) => {
 
   // Initialize store if date passed
   if (date) {
-    store.dispatch({ type: 'DATE', date: new Date(date) });
+    let initial_date = fecha.parse(date, 'MMM YYYY');
+    store.dispatch({ type: 'DATE', date: initial_date });
   }
 }
