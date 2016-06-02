@@ -11,7 +11,8 @@ module.exports = {
   output: {
     path: `${__dirname}/dist/`,
     filename: 'DateMonth.js',
-    library: 'DateMonth'
+    library: 'DateMonth',
+    libraryTarget: 'umd'
   },
   module: {
     loaders: [
