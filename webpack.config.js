@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  devtool: 'source-map',
+//  devtool: 'cheap-module-eval-source-map',
   entry: [
     './src/index'
   ],
@@ -19,11 +19,13 @@ module.exports = {
       { test: /\.css/, loader: 'style-loader!css-loader!autoprefixer-loader' },
       { test: /\.html/, loader: 'ractive' },
       {
-        test: /\.js$/,
-        loaders: ['babel'],
+        test: /\.(es6|js|jsx)$/,
         exclude: /node_modules/,
-        include: __dirname
-      }
+        loader: 'babel-loader',
+        query: {
+          cacheDirectory: true,
+          presets: ['es2015', 'react', 'stage-2']
+        }},
     ]
   },
   plugins: [
@@ -31,6 +33,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
+//        'NODE_ENV': JSON.stringify('development')
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
