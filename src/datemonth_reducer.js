@@ -12,6 +12,7 @@ function model(date) {
   let visible_months = MONTHS; // TODO consider limiting for this year.  Also I18N
   let visible_years = range(start, end);
   return {
+    date,
     day: 1,
     month,
     year,

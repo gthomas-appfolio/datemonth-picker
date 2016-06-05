@@ -15,11 +15,14 @@ module.exports = {
     libraryTarget: 'umd'
   },
   module: {
+    preLoaders: [
+      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs-loader', query: { type: 'none' } }
+    ],
     loaders: [
       { test: /\.css/, loader: 'style-loader!css-loader!autoprefixer-loader' },
       { test: /\.html/, loader: 'ractive' },
       {
-        test: /\.js$/,
+        test: /\.js|tag$/,
         loaders: ['babel'],
         exclude: /node_modules/,
         include: __dirname
@@ -28,6 +31,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.ProvidePlugin({riot: 'riot'}),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
