@@ -5,22 +5,12 @@
   </head>
   <body>
     <div>
-      <div id="datemonth">
-        <input name="datemonth" type="text" value="Nov 1971">
-      </div>
-      <div id="cool"></div>
+      <form action="?" method="get">
+        <DateMonth name="datemonth" value="Nov 1971" />
+        <input type="submit" value="Submit">
+      </form>
     </div>
   </body>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="dist/DateMonth.js"></script>
-  <script>
-    $(function() {
-      // Get current date value from input:
-      var date = $("#datemonth input").val();
-
-      // Pass the element to replace, name of the input, and date value:
-      DateMonth('#datemonth', 'datemonth', date);
-    });
-  </script>
 </html>
