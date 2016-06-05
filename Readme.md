@@ -3,16 +3,9 @@
 
 ## Usage:
 ```html
+<DateMonth name="datemonth" value="Sep 1985" />
+...
 <script src="DateMonth.js"></script>
-<script>
-  $(function() {
-    // Get current date value from input:
-    var date = $("#datemonth input").val();
-
-    // Pass the element to replace, name of the input, and date value:
-    DateMonth('#datemonth', 'datemonth', date);
-  });
-</script>
 ```
 ----
 
