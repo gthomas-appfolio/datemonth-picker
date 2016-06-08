@@ -17,10 +17,10 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.css/, loader: 'style-loader!css-loader!autoprefixer-loader' },
-      { test: /\.html/, loader: 'ractive' },
+      { test: /\.html/, loader: 'html-loader' },
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel-loader',
         exclude: /node_modules/,
         include: __dirname
       }

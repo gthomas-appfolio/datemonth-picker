@@ -1,8 +1,8 @@
 .date_month {
   display: inline-block;
   font-family: sans-serif;
+  max-width: 300px;
   position: relative;
-  width: 300px;
 }
 
 .date_month footer {
@@ -22,14 +22,27 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.25);
   font-size: 80%;
   position: absolute;
+  width: 24em;
   z-index: 1000;
 }
 
+.date_month .picker header {
+  text-align: center;
+}
+
+.date_month .month {
+  padding-top: 8px;
+}
 .date_month .year {
   border-left: 1px solid lightgrey;
 }
 
-.date_month .picker ul, .date_month .picker header {
+.date_month .picker header {
+  margin: 0;
+  padding: 4px;
+}
+
+.date_month .picker ul {
   column-count: 2;
   margin: 0;
   padding: 4px;

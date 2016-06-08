@@ -1,37 +1,30 @@
-import { createStore } from 'redux';
-import fecha from 'fecha';
-import reducer from './datemonth_reducer.js';
-import DateMonth from './DateMonth.js';
-import Ractive from 'ractive';
+import ko from 'knockout';
+import 'knockout-punches';
+ko.punches.enableAll();
 
-// CJS-style export wrapper to avoid `DateMonth.default`:
+import fecha from 'fecha';
+
+import DateMonth from './DateMonth.js';
+import template from './DateMonth.html';
+import './DateMonth.css';
+import './bootstrap.css';
+
 module.exports = (element, name = '', date) => {
 
-  const store = createStore(reducer);
-  const app = new Ractive({
-    el: element,
-    components: {
-      DateMonth
-    },
-    data: {
-      name: name,
-      store
-    },
-    template: `<DateMonth name="{{name}}" date={{store.getState()}} />`,
-    oninit() {
-      this.on({
-        'DateMonth.MONTH': (event, month) => store.dispatch({ type: 'MONTH', month }),
-        'DateMonth.YEAR': (event, year) => store.dispatch({ type: 'YEAR', year }),
-        'DateMonth.NEXT': () => store.dispatch({ type: 'NEXT' }),
-        'DateMonth.PREV': () => store.dispatch({ type: 'PREV' })
-      });
-    }
+  ko.components.register('date-month', {
+    viewModel: DateMonth,
+    template: template
   });
-  store.subscribe(() => app.update());
 
   // Initialize store if date passed
+  var initial_date = new Date();
   if (date) {
-    let initial_date = fecha.parse(date, 'MMM YYYY');
-    store.dispatch({ type: 'DATE', date: initial_date });
+    initial_date = fecha.parse(date, 'MMM YYYY');
   }
+
+  let model = {
+    date: initial_date
+  }
+
+  ko.applyBindings(model);
 }
